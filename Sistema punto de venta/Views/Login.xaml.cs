@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Sistema_punto_de_venta.ViewModels;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +26,8 @@ namespace Sistema_punto_de_venta.Views
         public Login()
         {
             this.InitializeComponent();
+            Object[] campos = { Email, Password };
+            DataContext = new LoginViewModel(campos);
         }
     }
 }
