@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -28,6 +29,9 @@ namespace Sistema_punto_de_venta.ViewModels
                     _sqlite.Connection.DeleteAll<TUsers>();
                     Frame rootFrame = Window.Current.Content as Frame;
                     rootFrame.Navigate(typeof(Login));
+                    break;
+                case "User":
+                    contentFrame.Navigate(typeof(Usuarios));
                     break;
                 default:
 
