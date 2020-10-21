@@ -132,22 +132,19 @@
     <PackageReference Include="Microsoft.Data.SqlClient">
       <Version>2.0.1</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Data.Sqlite">
-      <Version>3.1.9</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Data.Sqlite.Core">
-      <Version>3.1.9</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
     </PackageReference>
-    <PackageReference Include="SQLitePCLRaw.bundle_winsqlite3">
-      <Version>2.0.4</Version>
+    <PackageReference Include="SQLite.Net-PCL">
+      <Version>3.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.33.0">
+      <Name>SQLite for Universal Windows Platform</Name>
     </SDKReference>
   </ItemGroup>
   <ItemGroup>

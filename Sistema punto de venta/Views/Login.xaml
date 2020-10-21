@@ -14,12 +14,12 @@
             <Image HorizontalAlignment="Stretch" Height="100" Margin="0,0,0,0" VerticalAlignment="Stretch" Source="/Assets/Square44x44Logo.scale-400.png"/>
             <StackPanel Margin="0,0,0,0">
                 <TextBox Name="Email" Text="{Binding Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" InputScope="EmailSmtpAddress" PlaceholderText="Email" />
-                <TextBlock Foreground="#FFC43131" Text="{Binding EmailMessage, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Stretch" FontStyle="Normal"/>
+                <TextBlock Text="{Binding EmailMessage, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Stretch" FontStyle="Normal"/>
             </StackPanel>
 
             <StackPanel Margin="0,0,0,0">
                 <PasswordBox Name="Password" Password="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Password" />
-                <TextBlock Foreground="#FFC43131" Text="{Binding PasswordMessage, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                <TextBlock Text="{Binding PasswordMessage, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
             </StackPanel>
             <Button Content="Iniciar" Command="{Binding IniciarCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <TextBlock Text="{Binding Message, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Stretch"/>

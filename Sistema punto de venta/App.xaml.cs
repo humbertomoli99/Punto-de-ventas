@@ -1,4 +1,6 @@
-﻿using Sistema_punto_de_venta.Views;
+﻿using Connection;
+using Models;
+using Sistema_punto_de_venta.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +25,9 @@ namespace Sistema_punto_de_venta
     /// </summary>
     sealed partial class App : Application
     {
+        public static Frame mContentFrame { get; set; }
+        private SQLiteConnections _sqlite = new SQLiteConnections();
+        private string date = DateTime.Now.ToString("dd/MMM/yyy");
         /// <summary>
         /// Inicializa el objeto de aplicación Singleton. Esta es la primera línea de código creado
         /// ejecutado y, como tal, es el equivalente lógico de main() o WinMain().
@@ -59,21 +64,28 @@ namespace Sistema_punto_de_venta
                 // Poner el marco en la ventana actual.
                 Window.Current.Content = rootFrame;
             }
-
             if (e.PrelaunchActivated == false)
             {
                 if (rootFrame.Content == null)
                 {
-                    // Cuando no se restaura la pila de navegación, navegar a la primera página,
-                    // configurando la nueva página pasándole la información requerida como
-                    //parámetro de navegación
-                    rootFrame.Navigate(typeof(Login), e.Arguments);
+                    var user = _sqlite.Connection.Table<TUsers>().Where(u => u.Date.Equals(date)).ToList();
+                    if (0 < user.Count)
+                    {
+                        rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    }
+                    else
+                    {
+                        _sqlite.Connection.DeleteAll<TUsers>();
+                        // Cuando no se restaura la pila de navegación, navegar a la primera página,
+                        // configurando la nueva página pasándole la información requerida como
+                        //parámetro de navegación
+                        rootFrame.Navigate(typeof(Login), e.Arguments);
+                    }
                 }
                 // Asegurarse de que la ventana actual está activa.
                 Window.Current.Activate();
             }
         }
-
         /// <summary>
         /// Se invoca cuando la aplicación la inicia normalmente el usuario final. Se usarán otros puntos
         /// </summary>

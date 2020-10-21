@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_punto_de_venta.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,7 +13,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0xc0a
 
 namespace Sistema_punto_de_venta
@@ -22,9 +22,16 @@ namespace Sistema_punto_de_venta
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        MainViewModel _main;
         public MainPage()
         {
             this.InitializeComponent();
+            _main = new MainViewModel();
+        }
+        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            App.mContentFrame = ContentFrame;
+            _main.NavView_SelectionChanged(sender, args, ContentFrame);
         }
     }
 }

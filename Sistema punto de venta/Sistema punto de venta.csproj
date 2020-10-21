@@ -124,6 +124,7 @@
     <Compile Include="Models\PropertyChangedNotification.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>

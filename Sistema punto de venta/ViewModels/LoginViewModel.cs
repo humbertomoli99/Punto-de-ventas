@@ -20,11 +20,13 @@ namespace Sistema_punto_de_venta.ViewModels
         private String date = DateTime.Now.ToString("dd/MMM/yyy");
         private Frame rootFrame = Window.Current.Content as Frame;
         private Connections _conn;
+        private SQLiteConnections _sqlite;
         public LoginViewModel(object[] campos)
         {
             _textBoxEmail = (TextBox)campos[0];
             _textBoxPass = (PasswordBox)campos[1];
             _conn = new Connections();
+            _sqlite = new SQLiteConnections();
         }
         public ICommand IniciarCommand
         {
@@ -60,6 +62,7 @@ namespace Sistema_punto_de_venta.ViewModels
                             {
                                 var dataUser = user.ElementAt(0);
                                 dataUser.Date = DateTime.Now.ToString("dd/MMM/yyy");
+                                _sqlite.Connection.Insert(dataUser);
                                 //funcion para cambiar de vista
                                 rootFrame.Navigate(typeof(MainPage));
                             }
