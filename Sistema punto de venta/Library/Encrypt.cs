@@ -10,10 +10,9 @@ namespace Sistema_punto_de_venta.Library
 {
     public class Encrypt
     {
-        private static RijndaelManaged rm;
+        private static RijndaelManaged rm = new RijndaelManaged();
         public Encrypt()
         {
-            rm = new RijndaelManaged();
             // establece el modo para el funcionamiento del algoritmo
             rm.Mode = CipherMode.CBC;
             // establece el metodo de relleno utilizando el algoritmo.
@@ -26,10 +25,8 @@ namespace Sistema_punto_de_venta.Library
         public static string EncryptData(string textData, string Encryptionkey)
         {
             byte[] passBytes = Encoding.UTF8.GetBytes(Encryptionkey);
-            byte[] EncryptionKeyBytes = new byte[]
-            {
-                0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-            };
+            byte[] EncryptionKeyBytes = new byte[] {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+            
             int len = passBytes.Length;
             if (len > EncryptionKeyBytes.Length)
             {

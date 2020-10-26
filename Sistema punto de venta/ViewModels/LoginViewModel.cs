@@ -27,6 +27,8 @@ namespace Sistema_punto_de_venta.ViewModels
             _textBoxPass = (PasswordBox)campos[1];
             _conn = new Connections();
             _sqlite = new SQLiteConnections();
+
+            //var pass = Encrypt.EncryptData("1234","humberto@hotmail.com");
         }
         public ICommand IniciarCommand
         {
@@ -57,14 +59,23 @@ namespace Sistema_punto_de_venta.ViewModels
                     {
                         try
                         {
-                            var user = _conn.TUsers.Where(u => u.Email.Equals(Email) && u.Password.Equals(Password)).ToList();
+                            var user = _conn.TUsers.Where(u => u.Email.Equals(Email)).ToList();
+
                             if (0 < user.Count)
                             {
-                                var dataUser = user.ElementAt(0);
-                                dataUser.Date = DateTime.Now.ToString("dd/MMM/yyy");
-                                _sqlite.Connection.Insert(dataUser);
-                                //funcion para cambiar de vista
-                                rootFrame.Navigate(typeof(MainPage));
+                                var pass = Encrypt.DecryptData(user[0].Password, Email);
+                                if (pass.Equals(Password))
+                                {
+                                    var dataUser = user.ElementAt(0);
+                                    dataUser.Date = DateTime.Now.ToString("dd/MMM/yyy");
+                                    _sqlite.Connection.Insert(dataUser);
+                                    //funcion para cambiar de vista
+                                    rootFrame.Navigate(typeof(MainPage));
+                                }
+                                else
+                                {
+                                    Message = "Contraseña o email incorrectos";
+                                }
                             }
                             else
                             {
