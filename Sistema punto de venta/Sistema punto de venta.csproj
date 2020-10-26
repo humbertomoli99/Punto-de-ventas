@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Library\CommandHandler.cs" />
+    <Compile Include="Library\Encrypt.cs" />
     <Compile Include="Library\TextBoxEvent.cs" />
     <Compile Include="Models\PropertyChangedNotification.cs" />
     <Compile Include="Models\UserModel.cs" />
