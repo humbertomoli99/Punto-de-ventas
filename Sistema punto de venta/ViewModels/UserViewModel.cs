@@ -1,4 +1,5 @@
 ﻿using Sistema_punto_de_venta.Library;
+using Sistema_punto_de_venta.Models;
 using Sistema_punto_de_venta.Views;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace Sistema_punto_de_venta.ViewModels
 {
-    public class UserViewModel
+    public class UserViewModel : UserModel
     {
         public ICommand AddCommand
         {

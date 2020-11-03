@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_punto_de_venta.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,11 +26,7 @@ namespace Sistema_punto_de_venta.Views
         public AddUser()
         {
             this.InitializeComponent();
-        }
-
-        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
-        {
-
+            DataContext = new UserViewModel();
         }
     }
 }

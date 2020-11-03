@@ -47,5 +47,52 @@ namespace Sistema_punto_de_venta.Models
             get { return GetValue(() => PasswordMessage); }
             set { SetValue(() => PasswordMessage, value); }
         }
+
+        public string Nid
+        {
+            get { return GetValue(() => Nid); }
+            set
+            {
+                SetValue(() => Nid, value);
+                Message = "";
+            }
+        }
+        public string Name
+        {
+            get { return GetValue(() => Name); }
+            set
+            {
+                SetValue(() => Name, value);
+                Message = "";
+            }
+        }
+        public string LastName
+        {
+            get { return GetValue(() => LastName); }
+            set
+            {
+                SetValue(() => LastName, value);
+                Message = "";
+            }
+        }
+        public string Telephone
+        {
+            get { return GetValue(() => Telephone); }
+            set
+            {
+                SetValue(() => Telephone, value);
+                Message = "";
+            }
+        }
+        public string User
+        {
+            get { return GetValue(() => User); }
+            set
+            {
+                SetValue(() => User, value);
+                Message = "";
+            }
+        }
+
     }
 }
