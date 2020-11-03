@@ -1,5 +1,4 @@
-﻿using Sistema_punto_de_venta.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,12 +20,16 @@ namespace Sistema_punto_de_venta.Views
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Usuarios : Page
+    public sealed partial class AddUser : Page
     {
-        public Usuarios()
+        public AddUser()
         {
             this.InitializeComponent();
-            DataContext = new UserViewModel();
+        }
+
+        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+
         }
     }
 }

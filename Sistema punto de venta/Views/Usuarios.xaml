@@ -10,7 +10,7 @@
 
     <Grid>
         <CommandBar>
-            <AppBarButton Icon="Add" Label="Add"/>
+            <AppBarButton Icon="AddFriend" Command="{Binding AddCommand}" Label="Add"/>
             <AppBarButton Icon="Delete" Label="Delete"/>
             <AppBarButton Icon="RepeatAll" Label="Repeat"/>
             <AppBarSeparator/>
