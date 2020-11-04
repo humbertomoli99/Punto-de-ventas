@@ -1,4 +1,5 @@
-﻿using Sistema_punto_de_venta.ViewModels;
+﻿using Sistema_punto_de_venta.Library;
+using Sistema_punto_de_venta.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,26 @@ namespace Sistema_punto_de_venta.Views
             this.InitializeComponent();
             Object[] campos = { NID, Name, LastName, Telephone, Email, Password, User };
             DataContext = new UserViewModel(campos);
+        }
+
+        private void NID_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            TextBoxEvent.textPreviewKeyDown(e);
+        }
+
+        private void Name_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+
+        }
+
+        private void LastName_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+
+        }
+
+        private void Telephone_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+
         }
     }
 }

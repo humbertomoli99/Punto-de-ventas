@@ -19,6 +19,7 @@ namespace Sistema_punto_de_venta.Models
                 SetValue(() => Email, value);
                 EmailMessage = "";
                 Message = "";
+                UserTittle = "Registrar usuarios";
             }
 
         }
@@ -30,22 +31,23 @@ namespace Sistema_punto_de_venta.Models
                 SetValue(() => Password, value);
                 PasswordMessage = "";
                 Message = "";
+                UserTittle = "Registrar usuarios";
             }
         }
         public string Message
         {
             get { return GetValue(() => Message); }
-            set { SetValue(() => Message, value); }
+            set { SetValue(() => Message, value); UserTittle = "Registrar usuarios"; }
         }
         public string EmailMessage
         {
             get { return GetValue(() => EmailMessage); }
-            set { SetValue(() => EmailMessage, value); }
+            set { SetValue(() => EmailMessage, value); UserTittle = "Registrar usuarios";}
         }
         public string PasswordMessage
         {
             get { return GetValue(() => PasswordMessage); }
-            set { SetValue(() => PasswordMessage, value); }
+            set { SetValue(() => PasswordMessage, value); UserTittle = "Registrar usuarios"; }
         }
 
         public string Nid
@@ -55,6 +57,7 @@ namespace Sistema_punto_de_venta.Models
             {
                 SetValue(() => Nid, value);
                 Message = "";
+                UserTittle = "Registrar usuarios";
             }
         }
         public string Name
@@ -64,6 +67,7 @@ namespace Sistema_punto_de_venta.Models
             {
                 SetValue(() => Name, value);
                 Message = "";
+                UserTittle = "Registrar usuarios";
             }
         }
         public string LastName
@@ -73,6 +77,7 @@ namespace Sistema_punto_de_venta.Models
             {
                 SetValue(() => LastName, value);
                 Message = "";
+                UserTittle = "Registrar usuarios";
             }
         }
         public string Telephone
@@ -82,6 +87,7 @@ namespace Sistema_punto_de_venta.Models
             {
                 SetValue(() => Telephone, value);
                 Message = "";
+                UserTittle = "Registrar usuarios";
             }
         }
         public string User
@@ -91,6 +97,7 @@ namespace Sistema_punto_de_venta.Models
             {
                 SetValue(() => User, value);
                 Message = "";
+                UserTittle = "Registrar usuarios";
             }
         }
         public List<string> ListRoles //lista de roles de combobox
@@ -122,7 +129,10 @@ namespace Sistema_punto_de_venta.Models
         public string SelectedRole
         {
             get { return GetValue(() => SelectedRole); }
-            set { SetValue(() => SelectedRole, value); }
+            set {
+                SetValue(() => SelectedRole, value);
+                UserTittle = "Registrar usuarios";
+            }
         }
     }
 }

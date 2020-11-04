@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -56,7 +57,74 @@ namespace Sistema_punto_de_venta.ViewModels
         }
         private async Task RegisterUserAsync()
         {
-
+            if (Nid == null || Nid.Equals(""))
+            {
+                UserTittle = "Ingrese Nid";
+                _textBoxNid.Focus(FocusState.Programmatic);
+            }
+            else
+            {
+                if(Name == null || Name.Equals(""))
+                {
+                    UserTittle = "Ingrese el nombre";
+                    _textBoxName.Focus(FocusState.Programmatic);
+                }
+                else
+                {
+                    if (LastName == null || LastName.Equals(""))
+                    {
+                        UserTittle = "Ingrese el apellido";
+                        _textBoxLastName.Focus(FocusState.Programmatic);
+                    }
+                    else
+                    {
+                        if (Telephone == null || Telephone.Equals(""))
+                        {
+                            UserTittle = "Ingrese el Numero de telefono";
+                            _textBoxTelephone.Focus(FocusState.Programmatic);
+                        }
+                        else
+                        {
+                            if (Email == null || Email.Equals(""))
+                            {
+                                UserTittle = "Ingrese el email";
+                                _textBoxEmail.Focus(FocusState.Programmatic);
+                            }
+                            else
+                            {
+                                if (TextBoxEvent.IsValidEmail(Email))
+                                {
+                                    if(Password == null || Password.Equals(""))
+                                    {
+                                        UserTittle = "Ingrese la contrseña";
+                                        _textBoxPass.Focus(FocusState.Programmatic);
+                                    }
+                                    else
+                                    {
+                                        if (User == null || User.Equals(""))
+                                        {
+                                            UserTittle = "Ingrese el usuario";
+                                            _textBoxUser.Focus(FocusState.Programmatic);
+                                        }
+                                        else
+                                        {
+                                            if(SelectedRole == null || SelectedRole.Equals(""))
+                                            {
+                                                UserTittle = "Seleccione un rol";
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    UserTittle = "el Email no es valido";
+                                    _textBoxEmail.Focus(FocusState.Programmatic);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
