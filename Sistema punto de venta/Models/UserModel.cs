@@ -93,6 +93,36 @@ namespace Sistema_punto_de_venta.Models
                 Message = "";
             }
         }
-
+        public List<string> ListRoles //lista de roles de combobox
+        {
+            get
+            {
+                return new List<string>
+                {
+                    "Admin",
+                    "User"
+                };
+            }
+        }
+        public string UserTittle
+        {
+            get { return GetValue(() => UserTittle); }
+            set
+            {
+                if (UserTittle == null || UserTittle.Equals(""))
+                {
+                    SetValue(()  => UserTittle , "Registrar Usuarios");
+                }
+                else
+                {
+                    SetValue(() => UserTittle, value);
+                }
+            }
+        }
+        public string SelectedRole
+        {
+            get { return GetValue(() => SelectedRole); }
+            set { SetValue(() => SelectedRole, value); }
+        }
     }
 }

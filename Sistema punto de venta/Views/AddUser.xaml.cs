@@ -26,7 +26,8 @@ namespace Sistema_punto_de_venta.Views
         public AddUser()
         {
             this.InitializeComponent();
-            DataContext = new UserViewModel();
+            Object[] campos = { NID, Name, LastName, Telephone, Email, Password, User };
+            DataContext = new UserViewModel(campos);
         }
     }
 }
