@@ -33,22 +33,22 @@ namespace Sistema_punto_de_venta.Views
 
         private void NID_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
         {
-            TextBoxEvent.textPreviewKeyDown(e);
+            TextBoxEvent.numberPreviewKeyDown(e);
         }
 
         private void Name_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
         {
-
+            TextBoxEvent.textPreviewKeyDown(e);
         }
 
         private void LastName_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
         {
-
+            TextBoxEvent.textPreviewKeyDown(e);
         }
 
         private void Telephone_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
         {
-
+            TextBoxEvent.numberPreviewKeyDown(e);
         }
     }
 }
