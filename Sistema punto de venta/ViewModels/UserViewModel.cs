@@ -18,7 +18,7 @@ namespace Sistema_punto_de_venta.ViewModels
     {
         private Connections _conn;
         private BitmapImage _bitmapImage;
-        //private UploadImage uploadImage;
+        private UploadImage _uploadImage;
         private TextBox _textBoxNid, _textBoxName, _textBoxLastName;
         private TextBox _textBoxTelephone, _textBoxUser, _textBoxEmail;
         private TextBox _textBoxPass;
@@ -38,7 +38,7 @@ namespace Sistema_punto_de_venta.ViewModels
             _textBoxEmail = (TextBox)campos[4];
             _textBoxPass = (TextBox)campos[5];
             _textBoxUser = (TextBox)campos[6];
-
+            _uploadImage = new UploadImage();
             _conn = new Connections();
         }
         public ICommand AddCommand
@@ -53,6 +53,18 @@ namespace Sistema_punto_de_venta.ViewModels
             get
             {
                 return new CommandHandler(async () => await RegisterUserAsync());
+            }
+        }
+
+
+        public ICommand loadImage
+        {
+            get
+            {
+                return new CommandHandler(async () =>
+                {
+                    object[] objects = await _uploadImage.loadImageAsync();
+                });
             }
         }
         private async Task RegisterUserAsync()

@@ -122,6 +122,7 @@
     <Compile Include="Library\CommandHandler.cs" />
     <Compile Include="Library\Encrypt.cs" />
     <Compile Include="Library\TextBoxEvent.cs" />
+    <Compile Include="Library\UploadImage.cs" />
     <Compile Include="Models\PropertyChangedNotification.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
