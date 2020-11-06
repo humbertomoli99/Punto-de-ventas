@@ -18,6 +18,7 @@ namespace Sistema_punto_de_venta.Library
         private byte[] avatar;
         public async Task<object[]> loadImageAsync()
         {
+            avatar = null;
             var picker = new FileOpenPicker();
             picker.ViewMode = PickerViewMode.Thumbnail;
             picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
@@ -28,7 +29,7 @@ namespace Sistema_punto_de_venta.Library
             picker.FileTypeFilter.Add(".webp");// esta talvez no
             _bitmapImage = new BitmapImage();
             StorageFile file = await picker.PickSingleFileAsync();
-            if (file!=null)
+            if (file != null)
             {
                 using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
                 {
@@ -42,6 +43,14 @@ namespace Sistema_punto_de_venta.Library
             }
             object[] objects = { avatar, _bitmapImage };
             return objects;
+        }
+        public async Task<byte[]> ImagebyteAsync(BitmapImage image)
+        {
+            RandomAccessStreamReference streamRef = RandomAccessStreamReference.CreateFromUri(image.UriSource);
+            IRandomAccessStreamWithContentType streamWithContent = await streamRef.OpenReadAsync();
+            BinaryReader reader = new BinaryReader(streamWithContent.AsStream());
+            avatar = reader.ReadBytes((int)streamWithContent.Size);
+            return avatar;
         }
     }
 }

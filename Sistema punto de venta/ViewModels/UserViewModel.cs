@@ -68,7 +68,20 @@ namespace Sistema_punto_de_venta.ViewModels
                 {
                     object[] objects = await _uploadImage.loadImageAsync();
                     avatar = (byte[])objects[0];//va a la base de datos
-                    Image = (BitmapImage)objects[1];
+                    if (avatar != null)
+                    {
+                        _bitmapImage = (BitmapImage)objects[1];
+                        Image = _bitmapImage;
+                    }
+                    else
+                    {
+                        if (0 == _bitmapImage.PixelHeight)
+                        {
+                            _bitmapImage.UriSource = new Uri("ms-appx:///Assets/StorageLogo.scale-400.png");
+                            avatar = await _uploadImage.ImagebyteAsync(_bitmapImage);
+                            Image = _bitmapImage;
+                        }
+                    }
                 });
             }
         }
@@ -147,6 +160,7 @@ namespace Sistema_punto_de_venta.ViewModels
         {
             _bitmapImage.UriSource = new Uri("ms-appx:///Assets/StorageLogo.scale-400.png");
             Image = _bitmapImage;
+            _bitmapImage = new BitmapImage();
         }
     }
 }
