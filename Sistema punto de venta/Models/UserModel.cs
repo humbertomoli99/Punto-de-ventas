@@ -6,6 +6,7 @@ using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Email;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Sistema_punto_de_venta.Models
 {
@@ -38,6 +39,11 @@ namespace Sistema_punto_de_venta.Models
         {
             get { return GetValue(() => Message); }
             set { SetValue(() => Message, value); UserTittle = "Registrar usuarios"; }
+        }
+        public BitmapImage Image
+        {
+            get { return GetValue(() => Image); }
+            set { SetValue(() => Image, value); }
         }
         public string EmailMessage
         {

@@ -23,6 +23,7 @@ namespace Sistema_punto_de_venta.ViewModels
         private TextBox _textBoxTelephone, _textBoxUser, _textBoxEmail;
         private TextBox _textBoxPass;
         private string filename, fillPath;
+        private byte[] avatar;
 
         public UserViewModel()
         {
@@ -40,6 +41,8 @@ namespace Sistema_punto_de_venta.ViewModels
             _textBoxUser = (TextBox)campos[6];
             _uploadImage = new UploadImage();
             _conn = new Connections();
+            _bitmapImage = new BitmapImage();
+            ResetUsers();
         }
         public ICommand AddCommand
         {
@@ -64,6 +67,8 @@ namespace Sistema_punto_de_venta.ViewModels
                 return new CommandHandler(async () =>
                 {
                     object[] objects = await _uploadImage.loadImageAsync();
+                    avatar = (byte[])objects[0];//va a la base de datos
+                    Image = (BitmapImage)objects[1];
                 });
             }
         }
@@ -137,6 +142,11 @@ namespace Sistema_punto_de_venta.ViewModels
                     }
                 }
             }
+        }
+        private void ResetUsers()
+        {
+            _bitmapImage.UriSource = new Uri("ms-appx:///Assets/StorageLogo.scale-400.png");
+            Image = _bitmapImage;
         }
     }
 }
