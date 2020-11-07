@@ -1,4 +1,5 @@
 ﻿using Connection;
+using LinqToDB;
 using Sistema_punto_de_venta.Library;
 using Sistema_punto_de_venta.Models;
 using Sistema_punto_de_venta.Views;
@@ -142,6 +143,10 @@ namespace Sistema_punto_de_venta.ViewModels
                                             {
                                                 UserTittle = "Seleccione un rol";
                                             }
+                                            else
+                                            {
+                                                SaveData();
+                                            }
                                         }
                                     }
                                 }
@@ -155,6 +160,21 @@ namespace Sistema_punto_de_venta.ViewModels
                     }
                 }
             }
+        }
+        private void SaveData()
+        {
+            _conn.TUsers.Value(u => u.NID, Nid)
+                .Value(u => u.Name, Name)
+                .Value(u => u.LastName, LastName)
+                .Value(u => u.Telephone, Telephone)
+                .Value(u => u.Email, Email)
+                .Value(u => u.Password, Encrypt.EncryptData(Password,Email))
+                .Value(u => u.Users, User)
+                .Value(u => u.Role, SelectedRole)
+                .Value(u => u.Date, DateTime.Now.ToString("dd/MMM/yyy"))
+                .Value(u => u.Images, avatar)
+                .Insert();
+            App.mContentFrame.Navigate(typeof(Usuarios));
         }
         private void ResetUsers()
         {

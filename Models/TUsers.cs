@@ -21,5 +21,7 @@ namespace Models
         public string Telephone { get; set; }
         public string Role { get; set; }
         public string Date { get; set; }
+        public byte[] Images { get; set; }
+
     }
 }
