@@ -18,5 +18,47 @@
                 <TextBlock Text="Registro de usuarios" Margin="10,10"/>
             </CommandBar.Content>
         </CommandBar>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0">
+            <!--<ListView x:Name="ListViewUsers" ItemsSource="{Binding ListUsers, Mode=TwoWay}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" SelectionChanged="ListViewUsers_SelectionChanged">-->
+            <ListView x:Name="ListViewUsers" ItemsSource="{Binding ListUsers, Mode=TwoWay}">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Padding="5">
+                                <TextBlock TextAlignment="Center" Text="Imagen" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Padding="5">
+                                <TextBlock TextAlignment="Center" Text="Nombre" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Padding="5">
+                                <TextBlock TextAlignment="Center" Text="Apellido" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="48">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>
