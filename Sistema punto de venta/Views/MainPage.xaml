@@ -31,10 +31,11 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
+                        <Image Source="../Assets/StoreLogo.scale-400.png" Height="40" Width="40" Stretch="UniformToFill"/>
                         <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                    FontSize="28"
                                    VerticalAlignment="Center"
-                                   Text="Sistema de ventas"/>
+                                   Text="Sistema de ventas" Margin="4,0,630,0" Grid.Column="2"/>
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
