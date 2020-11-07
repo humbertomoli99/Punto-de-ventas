@@ -55,6 +55,19 @@
                                 <ColumnDefinition Width="130"/>
                                 <ColumnDefinition Width="130"/>
                             </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                <Ellipse Height="40" Width="40">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding Image}" Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock TextAlignment="Center" Text="{Binding Name}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                <TextBlock TextAlignment="Center" Text="{Binding LastName}"/>
+                            </StackPanel>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -28,7 +28,10 @@ namespace Sistema_punto_de_venta.ViewModels
 
         public UserViewModel()
         {
-
+            _bitmapImage = new BitmapImage();
+            _uploadImage = new UploadImage();
+            _conn = new Connections();
+            ResetUsers();
         }
         public UserViewModel(object[] campos)
         {
@@ -190,8 +193,29 @@ namespace Sistema_punto_de_venta.ViewModels
                 _textBoxEmail.Focus(FocusState.Programmatic);
             }
         }
+        private async Task GetUserAsync()
+        {
+            var ListUser = new List<UserModel>();
+            var list = _conn.TUsers.ToList();
+            if (0 < list.Count)
+            {
+                foreach (var item in list)
+                {
+                    var image = await _uploadImage.ImageFromBufferAsync(item.Images);
+                    ListUser.Add(new UserModel
+                    {
+                        ID = item.ID,
+                        Name = item.Name,
+                        LastName = item.LastName,
+                        Image = image
+                    });
+                }
+                ListUsers = ListUser;
+            }
+        }
         private void ResetUsers()
         {
+            GetUserAsync();
             _bitmapImage.UriSource = new Uri("ms-appx:///Assets/StorageLogo.scale-400.png");
             Image = _bitmapImage;
             _bitmapImage = new BitmapImage();

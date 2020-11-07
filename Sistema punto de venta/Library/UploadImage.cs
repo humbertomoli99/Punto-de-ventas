@@ -52,5 +52,19 @@ namespace Sistema_punto_de_venta.Library
             avatar = reader.ReadBytes((int)streamWithContent.Size);
             return avatar;
         }
+        public async Task<BitmapImage> ImageFromBufferAsync(byte[] byteAvatar)
+        {
+            _bitmapImage = new BitmapImage();
+            using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+            {
+                using(DataWriter writer = new DataWriter(stream.GetOutputStreamAt(0)))
+                {
+                    writer.WriteBytes(byteAvatar);
+                    await writer.StoreAsync();
+                }
+                await _bitmapImage.SetSourceAsync(stream);
+            }
+            return _bitmapImage;
+        }
     }
 }

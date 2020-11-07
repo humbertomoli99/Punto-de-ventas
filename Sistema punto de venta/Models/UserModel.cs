@@ -12,6 +12,7 @@ namespace Sistema_punto_de_venta.Models
 {
     public class UserModel : PropertyChangedNotification
     {
+        public int ID { get; set; }
         public string Email
         {
             get { return GetValue(() => Email); }
@@ -139,6 +140,11 @@ namespace Sistema_punto_de_venta.Models
                 SetValue(() => SelectedRole, value);
                 UserTittle = "Registrar usuarios";
             }
+        }
+        public List<UserModel> ListUsers
+        {
+            get { return GetValue(() => ListUsers); }
+            set { SetValue(() => ListUsers, value); }
         }
     }
 }
