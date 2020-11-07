@@ -145,7 +145,7 @@ namespace Sistema_punto_de_venta.ViewModels
                                             }
                                             else
                                             {
-                                                SaveData();
+                                                await SaveDataAsync();
                                             }
                                         }
                                     }
@@ -161,20 +161,34 @@ namespace Sistema_punto_de_venta.ViewModels
                 }
             }
         }
-        private void SaveData()
+        private async Task SaveDataAsync()
         {
-            _conn.TUsers.Value(u => u.NID, Nid)
-                .Value(u => u.Name, Name)
-                .Value(u => u.LastName, LastName)
-                .Value(u => u.Telephone, Telephone)
-                .Value(u => u.Email, Email)
-                .Value(u => u.Password, Encrypt.EncryptData(Password,Email))
-                .Value(u => u.Users, User)
-                .Value(u => u.Role, SelectedRole)
-                .Value(u => u.Date, DateTime.Now.ToString("dd/MMM/yyy"))
-                .Value(u => u.Images, avatar)
-                .Insert();
-            App.mContentFrame.Navigate(typeof(Usuarios));
+            var user = _conn.TUsers.Where(u => u.Email.Equals(Email)).ToList();
+            if (user.Count.Equals(0))
+            {
+                if(avatar == null)
+                {
+                    _bitmapImage.UriSource = new Uri("ms-appx:///Assets/StorageLogo.scale-400.png");
+                    avatar = await _uploadImage.ImagebyteAsync(_bitmapImage);
+                }
+                _conn.TUsers.Value(u => u.NID, Nid)
+                    .Value(u => u.Name, Name)
+                    .Value(u => u.LastName, LastName)
+                    .Value(u => u.Telephone, Telephone)
+                    .Value(u => u.Email, Email)
+                    .Value(u => u.Password, Encrypt.EncryptData(Password, Email))
+                    .Value(u => u.Users, User)
+                    .Value(u => u.Role, SelectedRole)
+                    .Value(u => u.Date, DateTime.Now.ToString("dd/MMM/yyy"))
+                    .Value(u => u.Images, avatar)
+                    .Insert();
+                App.mContentFrame.Navigate(typeof(Usuarios));
+            }
+            else
+            {
+                UserTittle = "El email ya esta registrado";
+                _textBoxEmail.Focus(FocusState.Programmatic);
+            }
         }
         private void ResetUsers()
         {
