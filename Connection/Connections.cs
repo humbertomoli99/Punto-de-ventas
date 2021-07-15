@@ -21,7 +21,7 @@ namespace Connection
 
         }*/
         public Connections() : base(new SqlServerDataProvider("", SqlServerVersion.v2017),
-            "Data Source=UNKNOWN\\SQLEXPRESS;Database=sales_system;Integrated Security=True;")
+            "Data Source=DESKTOP-R56EJQK\\SQLEXPRESS;Database=sales_system;Integrated Security=True;")
         {
 
         }
