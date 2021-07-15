@@ -1,12 +1,13 @@
 ﻿using Models;
-using SQLite.Net;
-using SQLite.Net.Platform.WinRT;
+using LinqToDB.DataProvider.SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SQLite.Net.Platform.WinRT;
+using SQLite.Net;
 
 namespace Connection
 {
