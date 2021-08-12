@@ -28,5 +28,9 @@ namespace Sistema_punto_de_venta.Views
             this.InitializeComponent();
             DataContext = new UserViewModel();
         }
+        private void ListViewUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
     }
 }
