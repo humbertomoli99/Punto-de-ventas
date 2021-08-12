@@ -18,7 +18,7 @@
                 <TextBlock Text="Registro de usuarios" Margin="10,10"/>
             </CommandBar.Content>
         </CommandBar>
-        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,50,0,0">
             <!--<ListView x:Name="ListViewUsers" ItemsSource="{Binding ListUsers, Mode=TwoWay}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" SelectionChanged="ListViewUsers_SelectionChanged">-->
             <ListView x:Name="ListViewUsers" ItemsSource="{Binding ListUsers, Mode=TwoWay}">
                 <ListView.HeaderTemplate>
