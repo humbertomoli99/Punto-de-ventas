@@ -1,5 +1,6 @@
 ﻿using Connection;
 using LinqToDB;
+using Models;
 using Sistema_punto_de_venta.Library;
 using Sistema_punto_de_venta.Models;
 using Sistema_punto_de_venta.Views;
@@ -197,17 +198,17 @@ namespace Sistema_punto_de_venta.ViewModels
         {
             var ListUser = new List<UserModel>();
             var list = _conn.TUsers.ToList();
-            if (0 < list.Count)
+            if (list.Count > 0)
             {
                 foreach (var item in list)
                 {
-                    var image = await _uploadImage.ImageFromBufferAsync(item.Images);
+                    //var image = await _uploadImage?.ImageFromBufferAsync(item.Images);
                     ListUser.Add(new UserModel
                     {
                         ID = item.ID,
                         Name = item.Name,
                         LastName = item.LastName,
-                        Image = image
+                        //Image = image
                     });
                 }
                 ListUsers = ListUser;
